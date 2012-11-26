@@ -1,13 +1,14 @@
 <%@ page import="javax.xml.parsers.*,org.w3c.dom.*,javax.xml.transform.*,java.io.*,javax.xml.transform.dom.DOMSource,javax.xml.transform.stream.StreamResult,javax.xml.parsers.ParserConfigurationException" %>
 
 <link rel="stylesheet" href="./css/page.css" type="text/css"></link>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+ <link rel="icon"  type="image/PNG" href="./css/camera_icon.png">
 
 <html>
 <head>
 </head>
 <body>
 <%
-out.println("<li><a href=\"./loading\">HoME</a></li>");   
 String img = request.getParameter("img");
 %>
 
@@ -72,11 +73,26 @@ String appPath = application.getRealPath("/");
 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 DocumentBuilder db=dbf.newDocumentBuilder();
 doc=db.parse(appPath + XmlPath);
-out.println("--Title--"+DescrVar);
-out.println("--Rotation--"+RotVar);
-out.println("--Height--"+HVar);
-out.println("--Width--"+WVar);
 %>
+
+<div id="home2"><a href="./loading">HoME</a></div>
+<form action="showimage.jsp" method="GET">
+<div id="hd11"><div>Description</div></div>
+<div id="hd22"><input name="description" type="text" value="<%=DescrVar%>" size="25"/></div><br>
+<div id="hd11"><div>Height</div></div>
+<div id="hd22"><input name="height" type="text" value="<%=HVar%>" size="25"/></div><br>
+<div id="hd11"><div>Width</div></div>
+<div id="hd22"><input name="width" type="text" value="<%=WVar%>" size="25"/></div><br>
+<div id="hd11"><div>Rotation</div></div>
+<div id="hd22"><input name="rotation" type="text" value="<%=RotVar%>"/></div><br>
+</div>
+
+<div><input name="img" type="hidden" value="<%=img%>"/></div><br>
+<div id="but21">
+<input type="submit" value="appLy chanGes"/>
+</div>
+
+</form>
 
 <center>
 <img src='./image/<%= img %>' height="<%=HVar%>px" width="<%=WVar%>px" style="transform: rotate(<%=RotVar%>deg);
@@ -84,15 +100,6 @@ out.println("--Width--"+WVar);
    -webkit-transform: rotate(<%=RotVar%>deg);" />
 </center>
 
-<form action="showimage.jsp" method="GET">
-<div>Description</div><input name="description" type="text" value="<%=DescrVar%>" size="25"/><br>
-<div>Height</div><input name="height" type="text" value="<%=HVar%>" size="25"/><br>
-<div>Width</div><input name="width" type="text" value="<%=WVar%>" size="25"/><br>
-<div>Rotation</div><input name="rotation" type="text" value="<%=RotVar%>"/><br>
-<div><input name="img" type="hidden" value="<%=img%>"/></div><br>
-<input type="submit" value="appLy chanGes"/>
-
-</form>
 
 <%
 setXMLValue(DescrVar,"Description",path);

@@ -125,6 +125,8 @@ public class ImageUploader extends HttpServlet {
 		 
       }
 	  
+		take.getSession().setAttribute("uploads","uploads");
+
 	    take.setAttribute("attribute", features);
         RequestDispatcher view = take.getRequestDispatcher("myfoto.jsp");
 		

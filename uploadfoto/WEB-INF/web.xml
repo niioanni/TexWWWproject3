@@ -8,6 +8,27 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+	<listener>
+	  <listener-class>
+	   CurrentUsers
+	  </listener-class>
+	</listener>
+
+	<listener>
+	  <listener-class>
+	   UploadCounter
+	  </listener-class>
+	</listener>
+
+
+	<listener>
+	  <listener-class>
+	   TotalUploadedFotos
+	  </listener-class>
+	</listener>
+
+
+
     <servlet>
         <servlet-name>SweetHome</servlet-name>
         <servlet-class>ImageUploader</servlet-class>
@@ -17,7 +38,16 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
         <servlet-name>SweetHome</servlet-name>
         <url-pattern>/loading</url-pattern>
     </servlet-mapping>
-	
+
+    <servlet>
+        <servlet-name>Info</servlet-name>
+        <servlet-class>Info</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Info</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>	
 	
 	<servlet>
         <servlet-name>LOGIN</servlet-name>
